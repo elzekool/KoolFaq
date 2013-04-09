@@ -1,0 +1,6 @@
+[submodule "framework"]
+	path = framework
+	url = git@github.com:elzekool/KoolDevelop.git
+[submodule "application/libs/KoolMinify"]
+	path = application/libs/KoolMinify
+	url = git@github.com:elzekool/KoolMinify.git
