@@ -1,0 +1,98 @@
+.startpagina {
+
+    background: @white ~"url(../img/startpagina-body.png)" 0 0 repeat-x; 
+
+    .merken {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li { float: left; }
+        img { border: 3px solid @grayLighter; padding: 3px; background: @white; margin: 0 10px 10px 0; }
+        
+    }
+
+    .top {
+        color: @white;
+        padding-top: 40px;
+        height: 315px;
+    }
+
+    .main {
+
+        @rotation: 6deg;
+        @shadowColor: rgba(0, 0, 0, 0.7);
+        
+        position: relative;
+        display: inline-block;
+        .ie7-inline-block();
+        width: 375px;
+        
+
+
+        > div {
+            position: relative;
+            padding: 10px;
+            background: @white;
+            .box-shadow(0px 0px 10px 1px @shadowColor);
+            z-index: 2;
+            height: 253px;
+        }
+
+        &:before, &:after {
+            z-index: 1; 
+            position: absolute; 
+            content: "";
+            bottom: 10px;
+            left: 10px;
+            width: 50%; 
+            top: 80%;
+            max-width:300px;
+            background: @shadowColor;             
+            .box-shadow(0 15px 10px @shadowColor);
+            .rotate(-@rotation);
+        }
+        
+        &:after {
+            .rotate(@rotation);
+            right: 10px;
+            left: auto;
+        }
+
+    }
+
+    .zoeken {
+        clear: both;            
+        @zoekWidth: 600px;
+        margin: 20px auto;
+        width: @zoekWidth;
+
+        input {
+            @paddingLeftRight: 15px;
+            @paddingTopBottom: 10px;
+
+            width: @zoekWidth - (2*@paddingLeftRight)-2px;
+            padding: @paddingTopBottom @paddingLeftRight;
+            .border-radius(5px);
+            font-size: @baseFontSize * 1.4;
+            line-height: @baseFontSize * 1.5;
+            height: @baseFontSize * 1.5;
+            .box-shadow(0px 0px 10px 3px #A00000);
+        }
+		
+		ul.typeahead {
+			width: 600px;
+			li a {
+				color: @gray;
+				strong {
+					color: @black;
+					font-weight: normal
+				}
+				font-weight: normal;
+				font-size: @baseFontSize * 1.2;
+				line-height: @baseFontSize * 1.6;
+			}
+			li.active a { color: @white; strong { color: @white; font-weight: strong; } }
+		}
+    }
+
+}

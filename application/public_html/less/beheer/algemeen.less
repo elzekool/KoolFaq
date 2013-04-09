@@ -1,0 +1,123 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body.beheer {
+    padding-top: 60px;
+    background: @white ~"url(../img/fauxsidebar.png)" 0px 0px repeat-y;
+
+    &.geenheader {
+        padding-top: 5px;
+    }
+}
+
+.sidebar-container {
+    @sidebarWith : 300px;
+   .side {
+        position: absolute;
+        left: 0;
+        width: @sidebarWith;
+    }
+    .content {
+        margin-left: @sidebarWith + @gridGutterWidth;
+    }
+    &.w-margin .side { margin-left: @gridGutterWidth; }
+    &.w-margin .content { margin-left: @sidebarWith + @gridGutterWidth + @gridGutterWidth; }
+}
+
+.navbar i.icon.icon-larger {
+    color: #aaa;
+    font-size: 25px;
+    height: @baseFontSize;
+    vertical-align: top;
+    overflow: visible;
+}
+
+.side .navigatie {
+
+    margin-bottom: 40px;
+    
+    h3 {
+        color: darken(@linkColor, 10%);        
+    }
+
+    ul.nav li {
+        background: @white;    
+        a {
+            color: @grayDarker;
+            &:hover {        
+                background: @btnPrimaryBackground;
+                color: @white;
+            }
+        }
+    }
+
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.table-bordered {
+    thead {
+        td, th {
+            background-color: darken(@tableBackgroundHover, 10%);
+            color: @tableBackgroundHoverText;
+            * {
+                color: @tableBackgroundHoverText;
+            }
+        }
+    }
+}
+
+.table-hover {
+    tbody {
+      tr:hover td,
+      tr:hover th {
+        background-color: @tableBackgroundHover;
+        color: @tableBackgroundHoverText;
+        a:not(.btn) {
+          color: @tableBackgroundHoverText;
+        }
+      }
+
+      tr.success:hover td,
+      tr.success:hover th {
+        background: darken(@green, 20%) !important;
+      }
+
+    }
+}
+
+.text-center, td.text-center, th.text-center { text-align: center; }
+tr.sortable td { cursor: n-resize }
+
+div.datepickerfix {
+    
+    margin-bottom: 5px;
+    font-size: 0; // white space collapse hack
+    white-space: nowrap; // Prevent span and input from separating
+
+    input[type="text"] {
+        .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    }
+
+    .btn {
+      margin-left: -1px;
+     .border-radius(0);
+    }
+    
+    .btn:last-child {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
+
+}
+
+div div.uneditable-input {
+    color: @black;
+    height: auto;
+    overflow: auto;
+    padding: 10px;
+}

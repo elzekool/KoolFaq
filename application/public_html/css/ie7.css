@@ -1,0 +1,13 @@
+.startpagina .main {
+    width: 375px;
+}
+
+.clearfix {
+    display: block;
+    clear: both;
+}
+
+i.icon {
+    padding-right: 5px;
+    
+}

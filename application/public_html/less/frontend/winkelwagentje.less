@@ -1,0 +1,56 @@
+table.winkelwagentje-tabel {
+    
+    .verwijder { width: 5%; }
+    .code { width: 15%; }
+    .titel { width: 38%; }
+    .prijs { width: 12%; }
+    .aantal { width: 15%; }
+    .totaal { 
+        width: 15%; 
+        .subtotaal_zonder_korting {
+            color: @red;
+            text-decoration: line-through;
+        }
+    }
+
+    &:hover .totaal .subtotaal_zonder_korting {
+        color: lighten(@red, 10%);
+    }
+
+    .totaal, .prijs, .aantal { text-align: right; }
+
+    .verzendkosten td {
+        &.titel {
+            text-align: right;
+        }
+    }
+
+    .sub_totaal td {
+        background: @grayLighter;
+
+        
+        &.titel {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        &.totaal {
+            font-weight: bold;
+        }
+    }
+
+    .eind_totaal td {
+        background: @grayLighter;
+
+        
+        &.titel {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        &.totaal {
+            font-weight: bold;
+            font-size: @baseFontSize*1.2;
+        }
+    }
+}

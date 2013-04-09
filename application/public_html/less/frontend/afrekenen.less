@@ -1,0 +1,104 @@
+.afrekenstappen {
+
+    .stap {    
+
+         > a {
+            color: inherit;
+            text-decoration: none;
+         }
+
+         display: block;        
+         padding: 5px 10px;
+         margin-right: 25px;
+         font-size: @baseFontSize * 1.2;
+
+         cursor: pointer;
+
+         .stapnr {
+            display: inline-block;
+            font-weight: bold;
+            width: 20px;
+         }
+
+         .info {
+            padding: 3px 0;
+            margin-left: 25px;
+            font-size: @baseFontSize / 1.2;
+            line-height: @baseLineHeight / 1.2;
+            color: @gray;
+            a {
+                color: inherit;
+                text-decoration: underline;
+                
+            }
+         }
+
+
+         &.actief {
+            background: @red;
+            color: @white;
+            .info {
+                color: inherit;
+            }
+            &:hover {
+                background: @red;
+                color: @white;
+            }
+         }
+
+         &:hover {  
+            background: @grayLighter;
+         }   
+    }
+
+}
+
+.inlogblok {
+    height: 265px;
+}
+
+.betaalwijzen {
+
+    .betaalwijze {
+        .box-shadow(0 0 10px 1px @grayLighter);
+        float: left;
+        width: 200px;
+        padding: 10px;
+        margin: 10px 13px 10px 0;
+        background: #fafafa;
+        text-align: center;
+
+        .betaalwijze-afbeelding {
+            display: block;
+            background: @white;
+            padding: 5px;
+            margin: 8px 0;
+            background: #eee;
+            border: 0;
+        }
+
+        .betaalwijze-titel {
+            color: @grayDark;
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        .kiezen {
+            button {
+                .btn;
+                .btn-small;
+            }
+        }
+
+        &:hover {
+            .kiezen {
+                button {
+                    .btn-inverse;
+                }
+            }
+        }
+    }
+}
