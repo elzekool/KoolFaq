@@ -64,15 +64,6 @@
                 </div>
                 
             </div>
-                        
-            <p>&nbsp;</p>
-            <hr />
-            
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" id="opslaan" class="btn btn-large"><i class="icon icon-save"></i> <?php __w('Opslaan','beheer'); ?></button>
-                </div>
-            </div>
             
             
         </div>

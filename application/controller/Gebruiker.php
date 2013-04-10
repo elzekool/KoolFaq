@@ -100,11 +100,6 @@ class Gebruiker extends \Controller
      */
     public function beheer_add() {
         
-        if ($this->getHuidigeGebruiker()->getRol() != \Model\Gebruiker::ROL_BEHEERDER) {
-            $this->setMelding(self::MELDING_FOUT, __('U heeft onvoldoende rechten voor deze actie', 'beheer'));
-            $this->redirect('/beheer/');
-        }
-        
         $gebruiker_container = new \Model\GebruikerContainer();
         $gebruiker = $gebruiker_container->newObject();
         
