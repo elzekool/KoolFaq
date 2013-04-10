@@ -78,6 +78,8 @@ class AntwoordContainer extends \KoolDevelop\Model\ContainerModel
         $model->setTitel($database_row->titel);
         $model->setVraag($database_row->vraag);
         $model->setAntwoord($database_row->antwoord);
+        $model->setViews($database_row->views);
+        $model->setRankingAvg($database_row->ranking_avg);
     }
 
     /**
@@ -122,6 +124,10 @@ class AntwoordContainer extends \KoolDevelop\Model\ContainerModel
             // Zoeken op titel
             } elseif (($conditie == 'zoektekst') AND ($waarde != '')) {
                 $query->where('titel LIKE ?', '%' . $waarde . '%');
+                
+            // Zoeken op tag
+            } elseif (($conditie == 'tag') AND ($waarde != '')) {
+                $query->where('id IN (SELECT antwoord_id FROM tags WHERE tag = ?)', $waarde);
             }
             
         }

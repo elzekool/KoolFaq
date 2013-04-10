@@ -31,8 +31,8 @@ class Bootstrapper extends \KoolDevelop\Bootstrapper
         $router = $this->Router;
         
         // Standaard frontend en backend pagina's
-        $router->addRoute(new \KoolDevelop\Route\Literal('/', '/voorpagina/index', true));
-        $router->addRoute(new \KoolDevelop\Route\Literal('/beheer', '/voorpagina/beheer_index/', true));
+        $router->addRoute(new \KoolDevelop\Route\Literal('/', '/antwoord/index', true));
+        $router->addRoute(new \KoolDevelop\Route\Literal('/beheer', '/antwoord/beheer_index/', true));
         
         // Beheer omgeving
         $router->addRoute(new \KoolDevelop\Route\Wildcard('/beheer/*/*', '/$1/beheer_$2'));

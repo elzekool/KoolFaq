@@ -143,6 +143,28 @@ class TagContainer extends \KoolDevelop\Model\ContainerModel
         
     }
     
+    /**
+     * Laad Tag Cloud
+     * 
+     * @return mixed[][] Tags met aantal
+     */
+    public function getTagCloud() {
+        
+        $database = \KoolDevelop\Database\Adaptor::getInstance($this->DatabaseConfiguration);
+        $result = $database->newQuery()
+            ->select('tag, COUNT(*) as count')
+            ->from($this->DatabaseTable)
+            ->groupby('tag')
+            ->orderby('count', 'DESC')
+            ->limit(15)
+            ->execute();
+        
+        $tags = $result->fetchAll(\PDO::FETCH_ASSOC);
+        
+        return is_array($tags) ? $tags : array();
+        
+    }
+    
     
     
 }

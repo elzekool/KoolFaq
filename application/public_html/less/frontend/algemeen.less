@@ -1,0 +1,134 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+
+.wysiwyg_body {
+    padding: 10px;
+}
+
+body.frontend {
+    padding-top: 60px;
+    background: darken(@navbarInverseBackground, 20%) ~"url(../img/fauxsidebar.png)" 50% 0px repeat-y;
+}
+
+.sidebar-container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    @sidebarWith : 300px;
+
+    .no-sidebar {
+        margin-left: @gridGutterWidth;
+    }
+
+   .side {
+        position: absolute;
+        left: 0;
+        width: @sidebarWith;
+    }
+    .content {
+        margin-left: @sidebarWith + @gridGutterWidth;
+    }
+    
+}
+
+.navbar i.icon.icon-larger {
+    color: #aaa;
+    font-size: 25px;
+    height: @baseFontSize;
+    vertical-align: top;
+    overflow: visible;
+}
+
+.side .navigatie {
+
+    margin-bottom: 40px;
+    
+    h3 {
+        color: darken(@linkColor, 10%);        
+    }
+
+    ul.nav li {
+        background: @white;    
+        a {
+            color: @grayDarker;
+            &:hover {        
+                background: @btnPrimaryBackground;
+                color: @white;
+            }
+        }
+    }
+
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.table-bordered {
+    thead {
+        td, th {
+            background-color: darken(@tableBackgroundHover, 10%);
+            color: @tableBackgroundHoverText;
+            * {
+                color: @tableBackgroundHoverText;
+            }
+        }
+    }
+}
+
+.table-hover {
+    tbody {
+      tr:hover td,
+      tr:hover th {
+        background-color: @tableBackgroundHover;
+        color: @tableBackgroundHoverText;
+        a:not(.btn) {
+          color: @tableBackgroundHoverText;
+        }
+      }
+
+      tr.success:hover td,
+      tr.success:hover th {
+        background: darken(@green, 20%) !important;
+      }
+
+    }
+}
+
+.text-center, td.text-center, th.text-center { text-align: center; }
+
+div div.uneditable-input {
+    color: @black;
+    height: auto;
+    overflow: auto;
+    padding: 10px;
+}
+
+.gekleurd {
+    color: @linkColorHover;
+}
+
+.tag {
+    display: inline-block;
+    background: @linkColor;
+    color: @white;
+    padding: 7px 15px;
+    margin: 4px 0;
+    .border-radius(4px);
+
+
+    &.tagn0 { background: lighten(@linkColor, 40%); }
+    &.tagn1 { background: lighten(@linkColor, 30%); }
+    &.tagn2 { background: lighten(@linkColor, 20%); }
+    &.tagn3 { background: lighten(@linkColor, 10%); }
+    &.tagn4 { background: lighten(@linkColor, 5%); }
+
+    &:hover {
+        color: @white;
+        background: darken(@linkColor, 10%);
+    }
+}

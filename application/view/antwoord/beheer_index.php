@@ -42,6 +42,8 @@ $pagination = $this->helper('Pagination');
                     <th><a href="<?php echo $pagination->getSortLink('id', 'DESC'); ?>"><?php __w('#', 'beheer'); ?></a></th>
                     <th><a href="<?php echo $pagination->getSortLink('aangemaakt', 'DESC'); ?>"><?php __w('Toegevoegd op', 'beheer'); ?></a></th>
                     <th><a href="<?php echo $pagination->getSortLink('titel', 'ASC'); ?>"><?php __w('Titel', 'beheer'); ?></a></th>
+                    <th><a href="<?php echo $pagination->getSortLink('ranking_avg', 'ASC'); ?>"><?php __w('Beoordeling', 'beheer'); ?></a></th>
+                    <th><a href="<?php echo $pagination->getSortLink('views', 'ASC'); ?>"><?php __w('Aantal keer bekeken', 'beheer'); ?></a></th>
                     <th><?php __w('Acties', 'beheer'); ?></th>
                 </tr>
             </thead>
@@ -52,6 +54,8 @@ $pagination = $this->helper('Pagination');
                         <td><?php echo _h($antwoord->getId()); ?></td>
                         <td><?php echo _h($this->helper('Weergave')->datumtijd($antwoord->getAangemaakt())); ?></td>
                         <td><?php echo _h($antwoord->getTitel()); ?></td>
+                        <td><?php echo _h($antwoord->getRankingAvg()); ?></td>
+                        <td><?php echo _h($antwoord->getViews()); ?></td>
                         <td class="nowrap">
                             <a href="beheer/antwoord/view/<?php echo $antwoord->getId(); ?>"><?php __w('Details', 'beheer'); ?></a> |
                             <a href="beheer/antwoord/edit/<?php echo $antwoord->getId(); ?>"><?php __w('Wijzigen', 'beheer'); ?></a>

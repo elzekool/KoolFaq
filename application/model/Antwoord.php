@@ -28,6 +28,8 @@ class Antwoord extends \Model
     private $Titel;
     private $Vraag;
     private $Antwoord;
+    private $Views = 0;
+    private $RankingAvg = 0;
     
     /**
      * Get Id
@@ -131,7 +133,48 @@ class Antwoord extends \Model
     public function setAntwoord($Antwoord) {
         $this->Antwoord = $Antwoord;
     }
+    
+    /**
+     * Get Views
+     *
+     * @return int Views
+     **/
+    public function getViews() {
+        return $this->Views;
+    }
 
+    /**
+     * Set Views
+     *
+     * @param int $Views Views
+     *
+     * @return void
+     **/
+    public function setViews($Views) {
+        $this->Views = $Views;
+    }
+
+    /**
+     * Get RankingAvg
+     *
+     * @return float RankingAvg
+     **/
+    public function getRankingAvg() {
+        return $this->RankingAvg;
+    }
+
+    /**
+     * Set RankingAvg
+     *
+     * @param float $RankingAvg RankingAvg
+     *
+     * @return void
+     **/
+    public function setRankingAvg($RankingAvg) {
+        $this->RankingAvg = $RankingAvg;
+    }
+
+    
     /**
      * Laad Tags a.d.v. Id
      * 
@@ -144,6 +187,7 @@ class Antwoord extends \Model
         $tag_container = new \Model\TagContainer();
         return $tag_container->index(array('antwoord_id' => $this->getId()));
     }
+    
     
 
     

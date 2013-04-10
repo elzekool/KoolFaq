@@ -20,6 +20,64 @@ namespace Controller;
  **/
 class Antwoord extends \Controller
 {
+    
+    /**
+     * Antwoord Overzicht
+     * 
+     * @ViewConfig({AutoRender = true, View = "antwoord/index" })
+     * @ViewConfig({Layout = "default"})
+     * 
+     * @return void
+     */
+    public function index() {
+              
+        $pagination = $this->View->helper('Pagination');
+        /* @var $pagination \View\Helper\Pagination */
+
+        
+        $pagination
+            ->setSessionStorage('AntwoordIndexFront', array('sort', 'direction', 'zoektekst'))
+            ->setPageSize(10)
+            ->setSearchConditions(array(
+                'zoektekst' => $pagination->getParameter('zoektekst', ''),
+                'tag' => $pagination->getParameter('tag', '')
+            ))
+            ->setBaseParameters(array(
+                'zoektekst' => $pagination->getParameter('zoektekst', ''),
+                'tag' => $pagination->getParameter('tag', '')                
+            ))            
+            ->setDefaultBaseUrl(r()->getBase() . '/antwoord/index')
+            ->setAllowedSortingFields(array('id', 'aangemaakt', 'titel'))
+            ->setDefaultSorting('id', 'DESC')
+            ->setContainerModel(new \Model\AntwoordContainer())
+            ->paginate();
+
+        
+        
+        $this->View->setTitle(__('Antwoorden'));
+    }
+
+    
+     /**
+     * Antwoord tonen
+     * 
+     * @ViewConfig({AutoRender = true, View = "antwoord/view"})
+     * @ViewConfig({Layout = "default" })
+     * 
+     * @return void
+     */
+    public function view($id) {                
+        
+        $antwoord_container = new \Model\AntwoordContainer();
+        if (null === ($antwoord = $antwoord_container->first(array('id' => $id)))) {
+            throw new \KoolDevelop\Exception\NotFoundException(__f('Antwoord niet gevonden!', 'exception'));
+        }
+        
+        $this->View->set('antwoord', $antwoord);
+        $this->View->setTitle($antwoord->getTitel());
+        
+    }
+    
     /**
      * Callback ($model, $data) nadat waarden uit model zijn geladen 
      * 
@@ -40,17 +98,6 @@ class Antwoord extends \Controller
         }
     }
     
-    /**
-     * Callback ($model, $data) voordat waarden in model zijn geladen 
-     * 
-     * @param \Model  $model Model
-     * @param mixed[] $data  Formulier data
-     * 
-     * @return void
-     */
-    public function addedit_saving(\Model &$model, &$data) {
-        
-    }
     
     /**
      * Callback ($model, $data) nadat waarden in model zijn geladen.
