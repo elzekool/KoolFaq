@@ -104,6 +104,37 @@ class AntwoordContainer extends \KoolDevelop\Model\ContainerModel
             $model->setId($value);
         }
     }
+    
+    /**
+     * Markeer Antwoord als bekeken
+     * 
+     * @param int $id Antwoord Id
+     * 
+     * @return void
+     */
+    public function trackWeergave($id) {        
+        $session = \KoolDevelop\Session\Session::getInstance();
+        if ($session->get('tracked_' . intval($id), 0) == 1) {
+            return;
+        }        
+        $database = \KoolDevelop\Database\Adaptor::getInstance();
+        $database->newQuery()->custom("UPDATE antwoorden SET views = views + 1 WHERE id = ?", $id)->execute();
+        $session->set('tracked_' . intval($id), 1);
+    }
+    
+    /**
+     * Sla beoordeling voor antwoor dop
+     * 
+     * @param int $id      Antwoord Id
+     * @param int $ranking Ranking (0/1)
+     * 
+     * @return void
+     */
+    public function rankAntwoord($id, $ranking) {        
+        $database = \KoolDevelop\Database\Adaptor::getInstance();
+        $database->newQuery()->custom("UPDATE antwoorden SET ranking_aantal = ranking_aantal + 1, ranking_totaal = ranking_totaal + ? WHERE id = ?", $ranking, $id)->execute();
+        $database->newQuery()->custom("UPDATE antwoorden SET ranking_avg = (ranking_totaal / ranking_aantal) WHERE id = ?", $id)->execute();
+    }
 
     /**
      * Proces Conditions into Query

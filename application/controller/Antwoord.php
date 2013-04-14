@@ -73,8 +73,36 @@ class Antwoord extends \Controller
             throw new \KoolDevelop\Exception\NotFoundException(__f('Antwoord niet gevonden!', 'exception'));
         }
         
+        $antwoord_container->trackWeergave($antwoord->getId());
+        
+        $session = \KoolDevelop\Session\Session::getInstance();
+        $this->View->set('ranked', $session->get('ranked_' . $antwoord->getId(), 0));
+        
         $this->View->set('antwoord', $antwoord);
         $this->View->setTitle($antwoord->getTitel());
+        
+    }
+    
+    /**
+     * Antwoord beoordelen
+     * 
+     * @param int $id Id
+     * @param int $beoordeling Beoordeling (0/1)
+     * 
+     * @return void
+     */
+    public function beoordeel($id, $beoordeling) {                
+        
+        $antwoord_container = new \Model\AntwoordContainer();
+        if (null === ($antwoord = $antwoord_container->first(array('id' => $id)))) {
+            throw new \KoolDevelop\Exception\NotFoundException(__f('Antwoord niet gevonden!', 'exception'));
+        }
+        
+        $antwoord_container->rankAntwoord($antwoord->getId(), $beoordeling);
+        
+        $session = \KoolDevelop\Session\Session::getInstance();
+        $session->set('ranked_' . $antwoord->getId(), 1);        
+        $this->redirect('antwoord/view/' . $antwoord->getId());
         
     }
     

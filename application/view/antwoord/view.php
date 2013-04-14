@@ -34,9 +34,13 @@
             <?php __w('Geef aan of je het antwoord nuttig vind. Zo help je ons, en anderen de antwoorden te verbeteren.'); ?>
         </p>
         <p>
-            <a class="btn btn-success" href="antwoord/beoordeel/<?php echo $antwoord->getId(); ?>/1"><i class="icon icon-thumbs-up"></i> <?php __w('Ja'); ?></a>
-            &nbsp; &nbsp;
-            <a class="btn btn-danger" href="antwoord/beoordeel/<?php echo $antwoord->getId(); ?>/0"><i class="icon icon-thumbs-down"></i> <?php __w('Nee'); ?></a>
+            <?php if ($ranked == 1) : ?>
+                <p class="alert alert-success"><?php __w('Dank u voor uw beoordeling'); ?></p>
+            <?php else: ?>
+                <a class="btn btn-success" href="antwoord/beoordeel/<?php echo $antwoord->getId(); ?>/1"><i class="icon icon-thumbs-up"></i> <?php __w('Ja'); ?></a>
+                &nbsp; &nbsp;
+                <a class="btn btn-danger" href="antwoord/beoordeel/<?php echo $antwoord->getId(); ?>/0"><i class="icon icon-thumbs-down"></i> <?php __w('Nee'); ?></a>
+            <?php endif; ?>
         </p>
     </div>
 </div>

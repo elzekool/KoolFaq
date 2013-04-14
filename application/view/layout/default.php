@@ -36,6 +36,9 @@ $assets->css('css/frontend.css');
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" type="text/css" href="external/font-awesome/css/font-awesome-ie7.min.css" />
+        <![endif]-->
     </head>
     <body class="frontend">
         
